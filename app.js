@@ -2,14 +2,26 @@
 let amigos = [];
 
 function agregarAmigo(params) {
-	let entrada = document.getElementById("amigo");
-	let amigo = entrada.value;
+	const entrada = document.querySelector("input#amigo");
+	const amigo = entrada.value;
 	if (!amigo) {
 		alert("Por favor, inserte un nombre.");
 	} else if (amigo.match(/\w+/)) {
 		amigos.push(amigo);
-		console.log(amigos);
-		entrada.value = ""; // Porque si uso la variable "amigo", no funcionará
+		actualizarListaAmigosHTML();
+		// console.log(amigos);
+		entrada.value = ""; // Porque si uso la variable "amigo" (en lugar de "entrada.value"), no funcionará
 		entrada.focus(); // Opcional: Para seleccionar la entrada de nuevo y poder escribir continuamente
 	}
+}
+
+function actualizarListaAmigosHTML(params) {
+	let lista = document.querySelector("ul#listaAmigos");
+	lista.innerHTML = ""; // Limpiar la lista existente: Establecer lista.innerHTML = "" para asegurarse de que no haya duplicados al actualizar.
+	amigos.forEach(el => {
+		let elementoHTML = document.createElement("li");
+		elementoHTML.textContent = el;
+		lista.append(elementoHTML);
+	});
+	// console.log(lista);
 }
