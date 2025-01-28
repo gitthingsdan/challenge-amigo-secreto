@@ -9,7 +9,6 @@ function agregarAmigo(params) {
 	} else if (amigo.match(/\w+/)) {
 		amigos.push(amigo);
 		actualizarListaAmigosHTML();
-		// console.log(amigos);
 		entrada.value = ""; // Porque si uso la variable "amigo" (en lugar de "entrada.value"), no funcionará
 		entrada.focus(); // Opcional: Para seleccionar la entrada de nuevo y poder escribir continuamente
 	}
@@ -23,5 +22,13 @@ function actualizarListaAmigosHTML(params) {
 		elementoHTML.textContent = el;
 		lista.append(elementoHTML);
 	});
-	// console.log(lista);
+}
+
+function sortearAmigo(params) {
+	if (amigos.length) { // Validar que haya amigos disponibles: Antes de sortear, comprobar si el array amigos no está vacío.
+		let indiceAleatorio = Math.floor(Math.random() * amigos.length)
+		let amigoAleatorio = amigos[indiceAleatorio]
+		let resultado = document.querySelector("ul#resultado")
+		resultado.innerHTML = amigoAleatorio
+	}
 }
