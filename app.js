@@ -29,6 +29,8 @@ function sortearAmigo(params) {
 		let indiceAleatorio = Math.floor(Math.random() * amigos.length)
 		let amigoAleatorio = amigos[indiceAleatorio]
 		let resultado = document.querySelector("ul#resultado")
-		resultado.innerHTML = amigoAleatorio
+		resultado.innerHTML = `El amigo secreto sorteado es: ${amigoAleatorio}`
+		amigos = []
+		actualizarListaAmigosHTML()
 	}
 }
